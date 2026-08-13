@@ -1,126 +1,113 @@
 from pathlib import Path
 
-path = Path("/mnt/data/dilfinds_luxury_fragrance_hub.html")
-
 html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>DILFINDS — Smart Finds & Better Deals</title>
-<meta name="description" content="DILFINDS — smart finds, useful products and better deals.">
+<meta name="description" content="DILFINDS — curated fashion, beauty, fragrance, watches, kitchen and lifestyle finds.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#09090b;color:#fff}
-a{text-decoration:none;color:inherit}
-.container{width:92%;max-width:1100px;margin:auto}
-header{border-bottom:1px solid #24242a;padding:20px 0}
-.logo{font-size:27px;font-weight:900}.logo span{color:#e62b3b}
-.hero{text-align:center;padding:65px 10px 45px}
-.hero h1{font-size:46px;line-height:1.1;margin-bottom:16px}
-.hero h1 span{color:#e62b3b}
-.hero p{max-width:620px;margin:auto;color:#aaa;font-size:17px;line-height:1.6}
-.hero-btn,.shop-btn{display:inline-block;background:#e62b3b;padding:13px 22px;border-radius:11px;font-weight:800}
-.hero-btn{margin-top:26px}
-.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:50px}
-.category{background:#151519;border:1px solid #29292f;padding:16px 8px;text-align:center;border-radius:14px;font-weight:700}
-.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.section-title h2{font-size:27px}.section-title span{color:#e62b3b;font-size:13px;font-weight:700}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product{background:#151519;border:1px solid #29292f;border-radius:18px;padding:14px}
-.product-image{height:180px;border-radius:14px;background:#24242a;display:flex;justify-content:center;align-items:center;font-size:55px}
-.product h3{margin-top:15px;font-size:17px}.product p{color:#999;font-size:13px;line-height:1.5;margin:8px 0 15px}
-.shop-btn{display:block;text-align:center;padding:11px}
-.fragrance{margin:48px 0;background:linear-gradient(145deg,#151519,#0d0d10);border:1px solid #3a2428;border-radius:22px;padding:28px}
-.fragrance h2{font-size:28px;margin-bottom:8px}.fragrance p{color:#aaa;line-height:1.6;margin-bottom:20px}
-.fragrance .badge{display:inline-block;color:#e62b3b;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:10px}
-.disclosure{margin:42px 0;padding:18px;border:1px solid #29292f;background:#111115;border-radius:14px;color:#999;font-size:12px;line-height:1.6}
+body{font-family:Arial,Helvetica,sans-serif;background:#09090b;color:#fff;line-height:1.5}
+a{text-decoration:none;color:inherit}.container{width:92%;max-width:1120px;margin:auto}
+header{position:sticky;top:0;z-index:10;background:#09090bee;backdrop-filter:blur(12px);border-bottom:1px solid #24242a}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:900}.logo span{color:#e52b3b}.nav a{font-size:13px;color:#bbb;margin-left:18px}
+.hero{text-align:center;padding:65px 10px 45px}.hero h1{font-size:48px;line-height:1.08;margin-bottom:16px}.hero h1 span{color:#e52b3b}.hero p{max-width:650px;margin:auto;color:#aaa;font-size:16px}
+.btn,.shop{display:inline-block;background:#e52b3b;color:#fff;padding:12px 19px;border-radius:11px;font-weight:800}.hero .btn{margin-top:24px}
+.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:45px}.quick a{background:#151519;border:1px solid #29292f;border-radius:13px;padding:14px 8px;text-align:center;font-weight:700;font-size:13px}
+.section{margin:42px 0}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.title h2{font-size:27px}.title p{color:#777;font-size:12px}
+.feature{background:linear-gradient(145deg,#181519,#0d0d10);border:1px solid #3a2428;border-radius:22px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:20px}.feature .tag{color:#e52b3b;font-size:11px;font-weight:900;letter-spacing:1.2px}.feature h2{margin:7px 0;font-size:26px}.feature p{color:#aaa;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#151519;border:1px solid #29292f;border-radius:18px;padding:17px}.icon{height:110px;border-radius:14px;background:#24242a;display:flex;align-items:center;justify-content:center;font-size:42px;margin-bottom:13px}.card h3{font-size:16px;margin-bottom:6px}.card p{color:#999;font-size:13px;margin-bottom:14px}.shop{display:block;text-align:center;font-size:13px;padding:10px}
+.disclosure{margin:45px 0;padding:17px;background:#111115;border:1px solid #29292f;border-radius:14px;color:#888;font-size:12px}
 footer{border-top:1px solid #24242a;margin-top:50px;padding:28px 0;text-align:center;color:#777;font-size:12px}
-@media(max-width:800px){.hero h1{font-size:38px}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.hero h1{font-size:32px}.categories{grid-template-columns:repeat(2,1fr)}.products{gap:10px}.product{padding:10px}.product-image{height:130px;font-size:42px}}
+@media(max-width:800px){.quick{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}.feature{display:block}}
+@media(max-width:480px){.quick{grid-template-columns:repeat(2,1fr)}.grid{gap:10px}.hero h1{font-size:32px}.nav a{display:none}}
 </style>
 </head>
 <body>
 
-<header>
-<div class="container"><div class="logo">DIL<span>FINDS</span> ❤️</div></div>
-</header>
+<header><div class="container nav">
+<div class="logo">DIL<span>FINDS</span> ❤️</div>
+<div><a href="#categories">Categories</a><a href="#collections">Collections</a></div>
+</div></header>
 
 <main class="container">
 
 <section class="hero">
 <h1>Smart Finds. <span>Better Deals.</span></h1>
-<p>Discover useful products, trending finds and budget-friendly deals — all in one place.</p>
-<a href="#finds" class="hero-btn">Explore Finds ↓</a>
+<p>Curated products across fashion, beauty, fragrance, watches, home & kitchen and lifestyle — all in one place.</p>
+<a class="btn" href="#categories">Explore DILFINDS ↓</a>
 </section>
 
-<section class="categories">
-<a href="#finds" class="category">🔥 Deals</a>
-<a href="#finds" class="category">📱 Tech</a>
-<a href="#finds" class="category">👕 Fashion</a>
-<a href="#finds" class="category">🏠 Home</a>
-<a href="#fragrance" class="category">🖤 Fragrance</a>
+<section class="quick" id="categories">
+<a href="#fashion">👕 Fashion</a>
+<a href="#beauty">💄 Beauty</a>
+<a href="#fragrance">🖤 Fragrance</a>
+<a href="#watches">⌚ Watches</a>
+<a href="#home">🍳 Home & Kitchen</a>
 </section>
 
-<section id="fragrance" class="fragrance">
-<div class="badge">DILFINDS FEATURED COLLECTION</div>
+<section class="section" id="fragrance">
+<div class="feature">
+<div>
+<div class="tag">FEATURED COLLECTION</div>
 <h2>🖤 Luxury Fragrance Vault</h2>
-<p>Explore a curated collection of premium fragrance picks — 15 products in one collection.</p>
-<a class="shop-btn" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection →</a>
-</section>
-
-<section id="finds">
-<div class="section-title">
-<h2>🔥 Today's Finds</h2>
-<span>DILFINDS PICKS</span>
+<p>Explore the curated luxury fragrance collection.</p>
+<a class="shop" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection →</a>
 </div>
-
-<div class="products">
-
-<div class="product">
-<div class="product-image">📱</div>
-<h3>Smart Tech Find</h3>
-<p>Useful tech product worth checking out.</p>
-<a class="shop-btn" href="YOUR_AFFILIATE_LINK_1" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
-</div>
-
-<div class="product">
-<div class="product-image">🎧</div>
-<h3>Trending Gadget</h3>
-<p>A useful gadget for everyday use.</p>
-<a class="shop-btn" href="YOUR_AFFILIATE_LINK_2" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
-</div>
-
-<div class="product">
-<div class="product-image">🎒</div>
-<h3>Everyday Find</h3>
-<p>A practical product selected by DILFINDS.</p>
-<a class="shop-btn" href="YOUR_AFFILIATE_LINK_3" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
-</div>
-
-<div class="product">
-<div class="product-image">🏠</div>
-<h3>Home Pick</h3>
-<p>A useful home and lifestyle recommendation.</p>
-<a class="shop-btn" href="YOUR_AFFILIATE_LINK_4" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
-</div>
-
+<div style="font-size:70px">🖤</div>
 </div>
 </section>
 
-<div class="disclosure">
-<strong>Affiliate Disclosure:</strong>
-Some links on DILFINDS may be affiliate links. If you purchase through a qualifying link,
-DILFINDS may earn a commission at no extra cost to you. Prices and availability are controlled
-by the respective retailer.
+<section class="section" id="fashion">
+<div class="title"><div><h2>👕 Fashion</h2><p>Fashion finds & style picks</p></div></div>
+<div class="grid">
+<article class="card"><div class="icon">👖</div><h3>Glitchez Women Straight Fit Jeans</h3><p>Women • Jeans • Fashion</p><a class="shop" href="https://web.lehlah.club/share/n1vady8" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
+<article class="card"><div class="icon">👗</div><h3>Fashion Collection</h3><p>Curated fashion picks</p><a class="shop" href="https://app.lehlah.club/pc/239046" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
+<article class="card"><div class="icon">🛍️</div><h3>Style Collection</h3><p>More fashion finds</p><a class="shop" href="https://app.lehlah.club/pc/239045" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
 </div>
+</section>
+
+<section class="section" id="beauty">
+<div class="title"><div><h2>💄 Beauty & Personal Care</h2><p>Beauty, skincare & self-care picks</p></div></div>
+<div class="grid">
+<article class="card"><div class="icon">🧴</div><h3>Body Care Collection</h3><p>Body care & personal-care finds</p><a class="shop" href="https://app.lehlah.club/pc/239044" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
+<article class="card"><div class="icon">✨</div><h3>Beauty Collection</h3><p>Curated beauty picks</p><a class="shop" href="https://app.lehlah.club/pc/239043" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
+</div>
+</section>
+
+<section class="section" id="watches">
+<div class="title"><div><h2>⌚ Watches & Accessories</h2><p>Timepieces & accessories</p></div></div>
+<div class="grid">
+<article class="card"><div class="icon">⌚</div><h3>Fossil Men Bannon His & Her Watches</h3><p>Fossil • Watches & Accessories</p><a class="shop" href="https://web.lehlah.club/share/3uesmz1" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
+</div>
+</section>
+
+<section class="section" id="home">
+<div class="title"><div><h2>🍳 Home & Kitchen</h2><p>Useful home and kitchen finds</p></div></div>
+<div class="grid">
+<article class="card"><div class="icon">🍳</div><h3>Hawkins Futura Black 2.5L Kadhai with Lid</h3><p>Kitchen • Cookware</p><a class="shop" href="https://web.lehlah.club/share/2yium5q" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
+</div>
+</section>
+
+<section class="section" id="collections">
+<div class="title"><div><h2>🛍️ More Collections</h2><p>Open a collection to discover its products</p></div></div>
+<div class="grid">
+'''
+links = ["239044","239043","239040","239039","239038","239037","239036","239035","239032","239033","239030","239026","239027"]
+for i, lid in enumerate(links, start=1):
+    html += f'''<article class="card"><div class="icon">🛍️</div><h3>Curated Collection {i}</h3><p>Discover products selected for DILFINDS.</p><a class="shop" href="https://app.lehlah.club/pc/{lid}" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>\n'''
+html += r'''</div>
+</section>
+
+<div class="disclosure"><strong>Affiliate Disclosure:</strong> Some links on DILFINDS may be affiliate links. If you purchase through a qualifying link, DILFINDS may earn a commission at no extra cost to you. Product prices, availability and retailer terms may change.</div>
 
 </main>
-
-<footer>© 2026 DILFINDS ❤️ • Smart Finds • Better Deals • India</footer>
-
+<footer>© 2026 DILFINDS ❤️<br><br>Smart Finds • Better Deals • India</footer>
 </body>
 </html>'''
 
-path.write_text(html, encoding="utf-8")
-print(f"[Download updated DILFINDS website](sandbox:{path})")
+out = Path("/mnt/data/dilfinds_collection_website.html")
+out.write_text(html, encoding="utf-8")
+print(f"[Download complete DILFINDS collection website](sandbox:{out})")
