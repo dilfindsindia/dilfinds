@@ -1,113 +1,142 @@
 from pathlib import Path
 
-html = r'''<!DOCTYPE html>
+out = Path("/mnt/data/dilfinds_premium_v2.html")
+
+html = r'''<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DILFINDS — Smart Finds & Better Deals</title>
-<meta name="description" content="DILFINDS — curated fashion, beauty, fragrance, watches, kitchen and lifestyle finds.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILFINDS — Curated Finds</title>
+<meta name="description" content="DILFINDS — curated shopping finds across fashion, beauty, fragrance, watches and home.">
 <style>
+:root{
+  --bg:#080808;--panel:#111112;--panel2:#151516;--line:#29292b;
+  --text:#f7f4ef;--muted:#9d9a95;--accent:#b88a4a;--accent2:#d2aa6d;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#09090b;color:#fff;line-height:1.5}
-a{text-decoration:none;color:inherit}.container{width:92%;max-width:1120px;margin:auto}
-header{position:sticky;top:0;z-index:10;background:#09090bee;backdrop-filter:blur(12px);border-bottom:1px solid #24242a}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:900}.logo span{color:#e52b3b}.nav a{font-size:13px;color:#bbb;margin-left:18px}
-.hero{text-align:center;padding:65px 10px 45px}.hero h1{font-size:48px;line-height:1.08;margin-bottom:16px}.hero h1 span{color:#e52b3b}.hero p{max-width:650px;margin:auto;color:#aaa;font-size:16px}
-.btn,.shop{display:inline-block;background:#e52b3b;color:#fff;padding:12px 19px;border-radius:11px;font-weight:800}.hero .btn{margin-top:24px}
-.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:45px}.quick a{background:#151519;border:1px solid #29292f;border-radius:13px;padding:14px 8px;text-align:center;font-weight:700;font-size:13px}
-.section{margin:42px 0}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.title h2{font-size:27px}.title p{color:#777;font-size:12px}
-.feature{background:linear-gradient(145deg,#181519,#0d0d10);border:1px solid #3a2428;border-radius:22px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:20px}.feature .tag{color:#e52b3b;font-size:11px;font-weight:900;letter-spacing:1.2px}.feature h2{margin:7px 0;font-size:26px}.feature p{color:#aaa;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#151519;border:1px solid #29292f;border-radius:18px;padding:17px}.icon{height:110px;border-radius:14px;background:#24242a;display:flex;align-items:center;justify-content:center;font-size:42px;margin-bottom:13px}.card h3{font-size:16px;margin-bottom:6px}.card p{color:#999;font-size:13px;margin-bottom:14px}.shop{display:block;text-align:center;font-size:13px;padding:10px}
-.disclosure{margin:45px 0;padding:17px;background:#111115;border:1px solid #29292f;border-radius:14px;color:#888;font-size:12px}
-footer{border-top:1px solid #24242a;margin-top:50px;padding:28px 0;text-align:center;color:#777;font-size:12px}
-@media(max-width:800px){.quick{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}.feature{display:block}}
-@media(max-width:480px){.quick{grid-template-columns:repeat(2,1fr)}.grid{gap:10px}.hero h1{font-size:32px}.nav a{display:none}}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1120px,92%);margin:auto}
+header{border-bottom:1px solid var(--line);background:rgba(8,8,8,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:20}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Arial,sans-serif;font-weight:900;letter-spacing:2px;font-size:23px}
+.logo span{color:var(--accent2)}
+.navlinks{display:flex;gap:24px;font:12px Arial,sans-serif;color:#c7c3bd;text-transform:uppercase;letter-spacing:1px}
+.hero{text-align:center;padding:88px 10px 70px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:3px;color:var(--accent2);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(43px,7vw,78px);font-weight:500;line-height:.98;letter-spacing:-2px}
+.hero h1 em{font-style:italic;color:#d0b187}
+.hero p{max-width:610px;margin:24px auto 0;color:var(--muted);font:15px Arial,sans-serif;line-height:1.8}
+.hero .cta{display:inline-block;margin-top:30px;padding:13px 25px;border:1px solid var(--accent);font:700 11px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#f5eadb}
+.section{padding:32px 0 20px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:22px}
+.sectionhead h2{font-size:31px;font-weight:500}.sectionhead p{font:11px Arial,sans-serif;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
+.feature{display:grid;grid-template-columns:1.35fr .65fr;min-height:290px;border:1px solid #3a3024;background:linear-gradient(125deg,#171310,#0d0d0d);overflow:hidden}
+.featurecopy{padding:48px}.feature .tag{font:10px Arial,sans-serif;letter-spacing:2.5px;color:var(--accent2);text-transform:uppercase}
+.feature h3{font-size:39px;font-weight:500;margin:12px 0 10px}.feature p{color:#aaa;font:14px Arial,sans-serif;max-width:500px;line-height:1.7}
+.btn{display:inline-block;margin-top:23px;padding:12px 20px;background:var(--accent);color:#090807;font:800 11px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+.featurevisual{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#4b3721 0,#19130d 30%,#0b0b0b 68%);font-size:96px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);padding:24px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between}
+.icon{font-size:27px;margin-bottom:18px}.card h3{font-size:22px;font-weight:500}.card p{font:13px Arial,sans-serif;color:var(--muted);margin-top:7px}
+.card .btn{align-self:flex-start;background:transparent;color:#e2c08f;border:1px solid #5b4932}
+.note{margin:48px 0 25px;border-top:1px solid var(--line);padding-top:18px;color:#777;font:11px Arial,sans-serif;line-height:1.7}
+footer{border-top:1px solid var(--line);padding:28px 0 38px;text-align:center;color:#666;font:10px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:800px){.navlinks{display:none}.feature{grid-template-columns:1fr}.featurevisual{min-height:170px}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.hero{padding:64px 8px 50px}.featurecopy{padding:30px}.feature h3{font-size:32px}.grid{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead p{margin-top:6px}}
 </style>
 </head>
 <body>
 
-<header><div class="container nav">
-<div class="logo">DIL<span>FINDS</span> ❤️</div>
-<div><a href="#categories">Categories</a><a href="#collections">Collections</a></div>
-</div></header>
+<header>
+<div class="wrap nav">
+<div class="logo">DIL<span>FINDS</span></div>
+<nav class="navlinks">
+<a href="#featured">Featured</a>
+<a href="#fashion">Fashion</a>
+<a href="#beauty">Beauty</a>
+<a href="#lifestyle">Lifestyle</a>
+</nav>
+</div>
+</header>
 
-<main class="container">
+<main class="wrap">
 
 <section class="hero">
-<h1>Smart Finds. <span>Better Deals.</span></h1>
-<p>Curated products across fashion, beauty, fragrance, watches, home & kitchen and lifestyle — all in one place.</p>
-<a class="btn" href="#categories">Explore DILFINDS ↓</a>
+<div class="eyebrow">DILFINDS • CURATED SHOPPING</div>
+<h1>Find less.<br><em>Choose better.</em></h1>
+<p>Curated products and collections worth discovering — from fashion and fragrance to beauty, watches and home essentials.</p>
+<a class="cta" href="#featured">Explore the edit</a>
 </section>
 
-<section class="quick" id="categories">
-<a href="#fashion">👕 Fashion</a>
-<a href="#beauty">💄 Beauty</a>
-<a href="#fragrance">🖤 Fragrance</a>
-<a href="#watches">⌚ Watches</a>
-<a href="#home">🍳 Home & Kitchen</a>
-</section>
-
-<section class="section" id="fragrance">
-<div class="feature">
-<div>
-<div class="tag">FEATURED COLLECTION</div>
-<h2>🖤 Luxury Fragrance Vault</h2>
-<p>Explore the curated luxury fragrance collection.</p>
-<a class="shop" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection →</a>
+<section class="section" id="featured">
+<div class="sectionhead">
+<h2>Featured Edit</h2><p>Selected for DILFINDS</p>
 </div>
-<div style="font-size:70px">🖤</div>
+<div class="feature">
+<div class="featurecopy">
+<div class="tag">Signature Collection</div>
+<h3>Luxury Fragrance Vault</h3>
+<p>A curated fragrance collection for shoppers looking for premium scent picks.</p>
+<a class="btn" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection</a>
+</div>
+<div class="featurevisual">✦</div>
 </div>
 </section>
 
 <section class="section" id="fashion">
-<div class="title"><div><h2>👕 Fashion</h2><p>Fashion finds & style picks</p></div></div>
+<div class="sectionhead"><h2>Fashion</h2><p>Style edit</p></div>
 <div class="grid">
-<article class="card"><div class="icon">👖</div><h3>Glitchez Women Straight Fit Jeans</h3><p>Women • Jeans • Fashion</p><a class="shop" href="https://web.lehlah.club/share/n1vady8" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
-<article class="card"><div class="icon">👗</div><h3>Fashion Collection</h3><p>Curated fashion picks</p><a class="shop" href="https://app.lehlah.club/pc/239046" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
-<article class="card"><div class="icon">🛍️</div><h3>Style Collection</h3><p>More fashion finds</p><a class="shop" href="https://app.lehlah.club/pc/239045" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
+<article class="card">
+<div><div class="icon">◈</div><h3>STRV Relaxed Fit Jeans</h3><p>Women • High-rise • Stretchable</p></div>
+<a class="btn" href="https://web.lehlah.club/share/ndw2slh" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
+</article>
+<article class="card">
+<div><div class="icon">◇</div><h3>Glitchez Straight Fit Jeans</h3><p>Women • Denim • Straight fit</p></div>
+<a class="btn" href="https://web.lehlah.club/share/n1vady8" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
+</article>
 </div>
 </section>
 
 <section class="section" id="beauty">
-<div class="title"><div><h2>💄 Beauty & Personal Care</h2><p>Beauty, skincare & self-care picks</p></div></div>
+<div class="sectionhead"><h2>Beauty & Self Care</h2><p>Care edit</p></div>
 <div class="grid">
-<article class="card"><div class="icon">🧴</div><h3>Body Care Collection</h3><p>Body care & personal-care finds</p><a class="shop" href="https://app.lehlah.club/pc/239044" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
-<article class="card"><div class="icon">✨</div><h3>Beauty Collection</h3><p>Curated beauty picks</p><a class="shop" href="https://app.lehlah.club/pc/239043" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>
+<article class="card">
+<div><div class="icon">✦</div><h3>Body Care Collection</h3><p>Curated personal-care finds.</p></div>
+<a class="btn" href="https://app.lehlah.club/pc/239044" target="_blank" rel="nofollow sponsored noopener">Explore</a>
+</article>
+<article class="card">
+<div><div class="icon">✧</div><h3>Beauty Collection</h3><p>Selected beauty & self-care finds.</p></div>
+<a class="btn" href="https://app.lehlah.club/pc/239043" target="_blank" rel="nofollow sponsored noopener">Explore</a>
+</article>
 </div>
 </section>
 
-<section class="section" id="watches">
-<div class="title"><div><h2>⌚ Watches & Accessories</h2><p>Timepieces & accessories</p></div></div>
+<section class="section" id="lifestyle">
+<div class="sectionhead"><h2>Watches & Home</h2><p>Lifestyle edit</p></div>
 <div class="grid">
-<article class="card"><div class="icon">⌚</div><h3>Fossil Men Bannon His & Her Watches</h3><p>Fossil • Watches & Accessories</p><a class="shop" href="https://web.lehlah.club/share/3uesmz1" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
+<article class="card">
+<div><div class="icon">◷</div><h3>Fossil Bannon His & Her Watches</h3><p>Watches & accessories.</p></div>
+<a class="btn" href="https://web.lehlah.club/share/3uesmz1" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
+</article>
+<article class="card">
+<div><div class="icon">◌</div><h3>Hawkins Futura Black 2.5L Kadhai</h3><p>Kitchen • Cookware • With lid.</p></div>
+<a class="btn" href="https://web.lehlah.club/share/2yium5q" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
+</article>
 </div>
 </section>
 
-<section class="section" id="home">
-<div class="title"><div><h2>🍳 Home & Kitchen</h2><p>Useful home and kitchen finds</p></div></div>
-<div class="grid">
-<article class="card"><div class="icon">🍳</div><h3>Hawkins Futura Black 2.5L Kadhai with Lid</h3><p>Kitchen • Cookware</p><a class="shop" href="https://web.lehlah.club/share/2yium5q" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a></article>
+<div class="note">
+<strong>Affiliate disclosure:</strong> Some DILFINDS links may be affiliate links. If you make a qualifying purchase through a link, DILFINDS may earn a commission at no extra cost to you. Product prices, availability and retailer terms can change.
 </div>
-</section>
-
-<section class="section" id="collections">
-<div class="title"><div><h2>🛍️ More Collections</h2><p>Open a collection to discover its products</p></div></div>
-<div class="grid">
-'''
-links = ["239044","239043","239040","239039","239038","239037","239036","239035","239032","239033","239030","239026","239027"]
-for i, lid in enumerate(links, start=1):
-    html += f'''<article class="card"><div class="icon">🛍️</div><h3>Curated Collection {i}</h3><p>Discover products selected for DILFINDS.</p><a class="shop" href="https://app.lehlah.club/pc/{lid}" target="_blank" rel="nofollow sponsored noopener">Explore →</a></article>\n'''
-html += r'''</div>
-</section>
-
-<div class="disclosure"><strong>Affiliate Disclosure:</strong> Some links on DILFINDS may be affiliate links. If you purchase through a qualifying link, DILFINDS may earn a commission at no extra cost to you. Product prices, availability and retailer terms may change.</div>
 
 </main>
-<footer>© 2026 DILFINDS ❤️<br><br>Smart Finds • Better Deals • India</footer>
+
+<footer>DILFINDS • Curated Finds • Better Choices • India</footer>
 </body>
 </html>'''
 
-out = Path("/mnt/data/dilfinds_collection_website.html")
 out.write_text(html, encoding="utf-8")
-print(f"[Download complete DILFINDS collection website](sandbox:{out})")
+print(f"[Download premium DILFINDS v2](sandbox:{out})")
