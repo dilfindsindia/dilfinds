@@ -1,51 +1,44 @@
-from pathlib import Path
+out = Path("/mnt/data/index_clean_dilfinds.html")
 
-out = Path("/mnt/data/dilfinds_premium_v2.html")
-
-html = r'''<!doctype html>
+html = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DILFINDS — Curated Finds</title>
-<meta name="description" content="DILFINDS — curated shopping finds across fashion, beauty, fragrance, watches and home.">
+<meta name="description" content="Discover thoughtfully selected products across fashion, beauty, fragrance, watches and home — all in one place.">
 <style>
-:root{
-  --bg:#080808;--panel:#111112;--panel2:#151516;--line:#29292b;
-  --text:#f7f4ef;--muted:#9d9a95;--accent:#b88a4a;--accent2:#d2aa6d;
-}
+:root{--bg:#080808;--panel:#111112;--line:#29292b;--text:#f7f4ef;--muted:#9d9a95;--gold:#c49a61}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
 a{text-decoration:none;color:inherit}
 .wrap{width:min(1120px,92%);margin:auto}
-header{border-bottom:1px solid var(--line);background:rgba(8,8,8,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:20}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:Arial,sans-serif;font-weight:900;letter-spacing:2px;font-size:23px}
-.logo span{color:var(--accent2)}
-.navlinks{display:flex;gap:24px;font:12px Arial,sans-serif;color:#c7c3bd;text-transform:uppercase;letter-spacing:1px}
-.hero{text-align:center;padding:88px 10px 70px}
-.eyebrow{font:11px Arial,sans-serif;letter-spacing:3px;color:var(--accent2);text-transform:uppercase;margin-bottom:18px}
-.hero h1{font-size:clamp(43px,7vw,78px);font-weight:500;line-height:.98;letter-spacing:-2px}
-.hero h1 em{font-style:italic;color:#d0b187}
-.hero p{max-width:610px;margin:24px auto 0;color:var(--muted);font:15px Arial,sans-serif;line-height:1.8}
-.hero .cta{display:inline-block;margin-top:30px;padding:13px 25px;border:1px solid var(--accent);font:700 11px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#f5eadb}
-.section{padding:32px 0 20px}
-.sectionhead{display:flex;align-items:end;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:22px}
-.sectionhead h2{font-size:31px;font-weight:500}.sectionhead p{font:11px Arial,sans-serif;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
-.feature{display:grid;grid-template-columns:1.35fr .65fr;min-height:290px;border:1px solid #3a3024;background:linear-gradient(125deg,#171310,#0d0d0d);overflow:hidden}
-.featurecopy{padding:48px}.feature .tag{font:10px Arial,sans-serif;letter-spacing:2.5px;color:var(--accent2);text-transform:uppercase}
-.feature h3{font-size:39px;font-weight:500;margin:12px 0 10px}.feature p{color:#aaa;font:14px Arial,sans-serif;max-width:500px;line-height:1.7}
-.btn{display:inline-block;margin-top:23px;padding:12px 20px;background:var(--accent);color:#090807;font:800 11px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
-.featurevisual{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#4b3721 0,#19130d 30%,#0b0b0b 68%);font-size:96px}
+header{border-bottom:1px solid var(--line);background:rgba(8,8,8,.94);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:900 23px Arial,sans-serif;letter-spacing:2px}.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:24px;font:11px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#aaa}
+.hero{text-align:center;padding:80px 10px 65px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(44px,7vw,76px);font-weight:500;line-height:.98;letter-spacing:-2px}
+.hero h1 em{color:#d2b184}
+.hero p{max-width:650px;margin:24px auto 0;color:var(--muted);font:15px Arial,sans-serif;line-height:1.8}
+.cta,.btn{display:inline-block;margin-top:28px;padding:12px 21px;border:1px solid var(--gold);font:800 11px Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase}
+.section{padding:28px 0}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+.sectionhead h2{font-size:30px;font-weight:500}.sectionhead p{font:10px Arial,sans-serif;color:#777;letter-spacing:1.5px;text-transform:uppercase}
+.feature{display:grid;grid-template-columns:1.35fr .65fr;min-height:280px;border:1px solid #3a3024;background:linear-gradient(125deg,#171310,#0d0d0d)}
+.featurecopy{padding:45px}.tag{font:10px Arial,sans-serif;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase}
+.feature h3{font-size:38px;font-weight:500;margin:10px 0}.feature p{color:#aaa;font:14px Arial,sans-serif;max-width:500px}
+.featurevisual{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#4a3722 0,#19130d 32%,#0b0b0b 70%);font-size:90px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);padding:24px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between}
-.icon{font-size:27px;margin-bottom:18px}.card h3{font-size:22px;font-weight:500}.card p{font:13px Arial,sans-serif;color:var(--muted);margin-top:7px}
-.card .btn{align-self:flex-start;background:transparent;color:#e2c08f;border:1px solid #5b4932}
-.note{margin:48px 0 25px;border-top:1px solid var(--line);padding-top:18px;color:#777;font:11px Arial,sans-serif;line-height:1.7}
+.card{background:var(--panel);border:1px solid var(--line);padding:23px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.icon{font-size:25px;margin-bottom:16px;color:var(--gold)}.card h3{font-size:21px;font-weight:500}.card p{font:13px Arial,sans-serif;color:var(--muted);margin-top:6px}.card .btn{margin-top:18px;align-self:flex-start}
+.more{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.more a{border:1px solid var(--line);background:#101011;padding:18px;text-align:center;font:12px Arial,sans-serif;color:#bbb;letter-spacing:.5px}.more a:hover{border-color:#665137;color:#e2c08f}
+.note{margin:45px 0 25px;border-top:1px solid var(--line);padding-top:18px;color:#777;font:11px Arial,sans-serif;line-height:1.7}
 footer{border-top:1px solid var(--line);padding:28px 0 38px;text-align:center;color:#666;font:10px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
-@media(max-width:800px){.navlinks{display:none}.feature{grid-template-columns:1fr}.featurevisual{min-height:170px}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.hero{padding:64px 8px 50px}.featurecopy{padding:30px}.feature h3{font-size:32px}.grid{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead p{margin-top:6px}}
+@media(max-width:800px){.navlinks{display:none}.feature{grid-template-columns:1fr}.featurevisual{min-height:160px}.grid{grid-template-columns:1fr 1fr}.more{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.hero{padding:60px 8px 50px}.featurecopy{padding:30px}.feature h3{font-size:31px}.grid,.more{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead p{margin-top:5px}}
 </style>
 </head>
 <body>
@@ -66,20 +59,18 @@ footer{border-top:1px solid var(--line);padding:28px 0 38px;text-align:center;co
 
 <section class="hero">
 <div class="eyebrow">DILFINDS • CURATED SHOPPING</div>
-<h1>Find less.<br><em>Choose better.</em></h1>
-<p>Curated products and collections worth discovering — from fashion and fragrance to beauty, watches and home essentials.</p>
+<h1>Discover more.<br><em>Choose better.</em></h1>
+<p>Discover thoughtfully selected products across fashion, beauty, fragrance, watches and home — all in one place.</p>
 <a class="cta" href="#featured">Explore the edit</a>
 </section>
 
 <section class="section" id="featured">
-<div class="sectionhead">
-<h2>Featured Edit</h2><p>Selected for DILFINDS</p>
-</div>
+<div class="sectionhead"><h2>Featured Edit</h2><p>Selected for DILFINDS</p></div>
 <div class="feature">
 <div class="featurecopy">
 <div class="tag">Signature Collection</div>
 <h3>Luxury Fragrance Vault</h3>
-<p>A curated fragrance collection for shoppers looking for premium scent picks.</p>
+<p>Explore a curated collection of premium fragrance picks.</p>
 <a class="btn" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection</a>
 </div>
 <div class="featurevisual">✦</div>
@@ -89,54 +80,43 @@ footer{border-top:1px solid var(--line);padding:28px 0 38px;text-align:center;co
 <section class="section" id="fashion">
 <div class="sectionhead"><h2>Fashion</h2><p>Style edit</p></div>
 <div class="grid">
-<article class="card">
-<div><div class="icon">◈</div><h3>STRV Relaxed Fit Jeans</h3><p>Women • High-rise • Stretchable</p></div>
-<a class="btn" href="https://web.lehlah.club/share/ndw2slh" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
-</article>
-<article class="card">
-<div><div class="icon">◇</div><h3>Glitchez Straight Fit Jeans</h3><p>Women • Denim • Straight fit</p></div>
-<a class="btn" href="https://web.lehlah.club/share/n1vady8" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
-</article>
+<article class="card"><div><div class="icon">◈</div><h3>STRV Relaxed Fit Jeans</h3><p>Women • High-rise • Stretchable</p></div><a class="btn" href="https://web.lehlah.club/share/ndw2slh" target="_blank" rel="nofollow sponsored noopener">Shop Now</a></article>
+<article class="card"><div><div class="icon">◇</div><h3>Glitchez Straight Fit Jeans</h3><p>Women • Denim • Straight fit</p></div><a class="btn" href="https://web.lehlah.club/share/n1vady8" target="_blank" rel="nofollow sponsored noopener">Shop Now</a></article>
 </div>
 </section>
 
 <section class="section" id="beauty">
 <div class="sectionhead"><h2>Beauty & Self Care</h2><p>Care edit</p></div>
 <div class="grid">
-<article class="card">
-<div><div class="icon">✦</div><h3>Body Care Collection</h3><p>Curated personal-care finds.</p></div>
-<a class="btn" href="https://app.lehlah.club/pc/239044" target="_blank" rel="nofollow sponsored noopener">Explore</a>
-</article>
-<article class="card">
-<div><div class="icon">✧</div><h3>Beauty Collection</h3><p>Selected beauty & self-care finds.</p></div>
-<a class="btn" href="https://app.lehlah.club/pc/239043" target="_blank" rel="nofollow sponsored noopener">Explore</a>
-</article>
+<article class="card"><div><div class="icon">✦</div><h3>Body Care</h3><p>Curated personal-care finds.</p></div><a class="btn" href="https://app.lehlah.club/pc/239044" target="_blank" rel="nofollow sponsored noopener">Explore</a></article>
+<article class="card"><div><div class="icon">✧</div><h3>Beauty Finds</h3><p>Selected beauty & self-care picks.</p></div><a class="btn" href="https://app.lehlah.club/pc/239043" target="_blank" rel="nofollow sponsored noopener">Explore</a></article>
 </div>
 </section>
 
 <section class="section" id="lifestyle">
 <div class="sectionhead"><h2>Watches & Home</h2><p>Lifestyle edit</p></div>
 <div class="grid">
-<article class="card">
-<div><div class="icon">◷</div><h3>Fossil Bannon His & Her Watches</h3><p>Watches & accessories.</p></div>
-<a class="btn" href="https://web.lehlah.club/share/3uesmz1" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
-</article>
-<article class="card">
-<div><div class="icon">◌</div><h3>Hawkins Futura Black 2.5L Kadhai</h3><p>Kitchen • Cookware • With lid.</p></div>
-<a class="btn" href="https://web.lehlah.club/share/2yium5q" target="_blank" rel="nofollow sponsored noopener">Shop Now</a>
-</article>
+<article class="card"><div><div class="icon">◷</div><h3>Fossil Bannon His & Her Watches</h3><p>Watches & accessories.</p></div><a class="btn" href="https://web.lehlah.club/share/3uesmz1" target="_blank" rel="nofollow sponsored noopener">Shop Now</a></article>
+<article class="card"><div><div class="icon">◌</div><h3>Hawkins Futura Black 2.5L Kadhai</h3><p>Kitchen • Cookware • With lid.</p></div><a class="btn" href="https://web.lehlah.club/share/2yium5q" target="_blank" rel="nofollow sponsored noopener">Shop Now</a></article>
 </div>
 </section>
 
-<div class="note">
-<strong>Affiliate disclosure:</strong> Some DILFINDS links may be affiliate links. If you make a qualifying purchase through a link, DILFINDS may earn a commission at no extra cost to you. Product prices, availability and retailer terms can change.
+<section class="section">
+<div class="sectionhead"><h2>More Finds</h2><p>Explore collections</p></div>
+<div class="more">
+<a href="https://app.lehlah.club/pc/239046" target="_blank" rel="nofollow sponsored noopener">Fashion Collection</a>
+<a href="https://app.lehlah.club/pc/239045" target="_blank" rel="nofollow sponsored noopener">Style Collection</a>
+<a href="https://app.lehlah.club/pc/239040" target="_blank" rel="nofollow sponsored noopener">Curated Picks</a>
+<a href="https://app.lehlah.club/pc/239039" target="_blank" rel="nofollow sponsored noopener">More Finds</a>
 </div>
+</section>
+
+<div class="note"><strong>Affiliate disclosure:</strong> Some DILFINDS links may be affiliate links. If you make a qualifying purchase through a link, DILFINDS may earn a commission at no extra cost to you. Prices, availability and retailer terms can change.</div>
 
 </main>
-
 <footer>DILFINDS • Curated Finds • Better Choices • India</footer>
 </body>
-</html>'''
+</html>"""
 
 out.write_text(html, encoding="utf-8")
-print(f"[Download premium DILFINDS v2](sandbox:{out})")
+print(f"[Download clean index.html](sandbox:{out})")
