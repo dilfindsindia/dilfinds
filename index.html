@@ -1,491 +1,126 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+path = Path("/mnt/data/dilfinds_luxury_fragrance_hub.html")
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DILFINDS — Smart Finds & Better Deals</title>
-
-<meta name="description"
-content="DILFINDS — Smart finds, useful products and better deals for Indian shoppers.">
-
+<meta name="description" content="DILFINDS — smart finds, useful products and better deals.">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#09090b;
-  color:#fff;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-.container{
-  width:92%;
-  max-width:1100px;
-  margin:auto;
-}
-
-/* HEADER */
-
-header{
-  border-bottom:1px solid #24242a;
-  padding:20px 0;
-}
-
-.logo{
-  font-size:27px;
-  font-weight:900;
-}
-
-.logo span{
-  color:#e62b3b;
-}
-
-/* HERO */
-
-.hero{
-  text-align:center;
-  padding:70px 10px 50px;
-}
-
-.hero h1{
-  font-size:48px;
-  line-height:1.1;
-  margin-bottom:18px;
-}
-
-.hero h1 span{
-  color:#e62b3b;
-}
-
-.hero p{
-  max-width:620px;
-  margin:auto;
-  color:#aaa;
-  font-size:17px;
-  line-height:1.6;
-}
-
-.hero-btn{
-  display:inline-block;
-  margin-top:28px;
-  background:#e62b3b;
-  padding:14px 25px;
-  border-radius:12px;
-  font-weight:800;
-}
-
-/* CATEGORIES */
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  margin-bottom:55px;
-}
-
-.category{
-  background:#151519;
-  border:1px solid #29292f;
-  padding:17px 8px;
-  text-align:center;
-  border-radius:14px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.category:hover{
-  border-color:#e62b3b;
-  transform:translateY(-2px);
-}
-
-/* SECTION */
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.section-title h2{
-  font-size:27px;
-}
-
-.section-title span{
-  color:#e62b3b;
-  font-size:14px;
-}
-
-/* PRODUCTS */
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.product{
-  background:#151519;
-  border:1px solid #29292f;
-  border-radius:18px;
-  padding:14px;
-  overflow:hidden;
-}
-
-.product-image{
-  height:180px;
-  border-radius:14px;
-  background:#24242a;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:55px;
-}
-
-.product h3{
-  margin-top:15px;
-  font-size:17px;
-}
-
-.product p{
-  color:#999;
-  font-size:13px;
-  line-height:1.5;
-  margin:8px 0 15px;
-}
-
-.shop-btn{
-  display:block;
-  background:#e62b3b;
-  text-align:center;
-  padding:11px;
-  border-radius:10px;
-  font-size:14px;
-  font-weight:800;
-}
-
-/* AFFILIATE DISCLOSURE */
-
-.disclosure{
-  margin:45px 0;
-  padding:18px;
-  border:1px solid #29292f;
-  background:#111115;
-  border-radius:14px;
-  color:#999;
-  font-size:12px;
-  line-height:1.6;
-}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid #24242a;
-  margin-top:50px;
-  padding:28px 0;
-  text-align:center;
-  color:#777;
-  font-size:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-  .hero h1{
-    font-size:38px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:480px){
-
-  .hero{
-    padding-top:50px;
-  }
-
-  .hero h1{
-    font-size:32px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .products{
-    gap:10px;
-  }
-
-  .product{
-    padding:10px;
-  }
-
-  .product-image{
-    height:130px;
-    font-size:42px;
-  }
-
-  .product h3{
-    font-size:15px;
-  }
-
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#09090b;color:#fff}
+a{text-decoration:none;color:inherit}
+.container{width:92%;max-width:1100px;margin:auto}
+header{border-bottom:1px solid #24242a;padding:20px 0}
+.logo{font-size:27px;font-weight:900}.logo span{color:#e62b3b}
+.hero{text-align:center;padding:65px 10px 45px}
+.hero h1{font-size:46px;line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:#e62b3b}
+.hero p{max-width:620px;margin:auto;color:#aaa;font-size:17px;line-height:1.6}
+.hero-btn,.shop-btn{display:inline-block;background:#e62b3b;padding:13px 22px;border-radius:11px;font-weight:800}
+.hero-btn{margin-top:26px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:50px}
+.category{background:#151519;border:1px solid #29292f;padding:16px 8px;text-align:center;border-radius:14px;font-weight:700}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.section-title h2{font-size:27px}.section-title span{color:#e62b3b;font-size:13px;font-weight:700}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:#151519;border:1px solid #29292f;border-radius:18px;padding:14px}
+.product-image{height:180px;border-radius:14px;background:#24242a;display:flex;justify-content:center;align-items:center;font-size:55px}
+.product h3{margin-top:15px;font-size:17px}.product p{color:#999;font-size:13px;line-height:1.5;margin:8px 0 15px}
+.shop-btn{display:block;text-align:center;padding:11px}
+.fragrance{margin:48px 0;background:linear-gradient(145deg,#151519,#0d0d10);border:1px solid #3a2428;border-radius:22px;padding:28px}
+.fragrance h2{font-size:28px;margin-bottom:8px}.fragrance p{color:#aaa;line-height:1.6;margin-bottom:20px}
+.fragrance .badge{display:inline-block;color:#e62b3b;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:10px}
+.disclosure{margin:42px 0;padding:18px;border:1px solid #29292f;background:#111115;border-radius:14px;color:#999;font-size:12px;line-height:1.6}
+footer{border-top:1px solid #24242a;margin-top:50px;padding:28px 0;text-align:center;color:#777;font-size:12px}
+@media(max-width:800px){.hero h1{font-size:38px}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.hero h1{font-size:32px}.categories{grid-template-columns:repeat(2,1fr)}.products{gap:10px}.product{padding:10px}.product-image{height:130px;font-size:42px}}
 </style>
 </head>
-
-
 <body>
 
-<!-- HEADER -->
-
 <header>
-  <div class="container">
-    <div class="logo">
-      DIL<span>FINDS</span> ❤️
-    </div>
-  </div>
+<div class="container"><div class="logo">DIL<span>FINDS</span> ❤️</div></div>
 </header>
-
-
-<!-- MAIN -->
 
 <main class="container">
 
-
-<!-- HERO -->
-
 <section class="hero">
-
-  <h1>
-    Smart Finds.
-    <span>Better Deals.</span>
-  </h1>
-
-  <p>
-    Discover useful products, trending finds and
-    budget-friendly deals — all in one place.
-  </p>
-
-  <a href="#products" class="hero-btn">
-    Explore Finds ↓
-  </a>
-
+<h1>Smart Finds. <span>Better Deals.</span></h1>
+<p>Discover useful products, trending finds and budget-friendly deals — all in one place.</p>
+<a href="#finds" class="hero-btn">Explore Finds ↓</a>
 </section>
-
-
-<!-- CATEGORIES -->
 
 <section class="categories">
-
-  <a href="#products" class="category">
-    🔥 Deals
-  </a>
-
-  <a href="#products" class="category">
-    📱 Tech
-  </a>
-
-  <a href="#products" class="category">
-    👕 Fashion
-  </a>
-
-  <a href="#products" class="category">
-    🏠 Home
-  </a>
-
-  <a href="#products" class="category">
-    🎁 Lifestyle
-  </a>
-
+<a href="#finds" class="category">🔥 Deals</a>
+<a href="#finds" class="category">📱 Tech</a>
+<a href="#finds" class="category">👕 Fashion</a>
+<a href="#finds" class="category">🏠 Home</a>
+<a href="#fragrance" class="category">🖤 Fragrance</a>
 </section>
 
-
-<!-- PRODUCTS -->
-
-<section id="products">
-
-  <div class="section-title">
-
-    <h2>
-      🔥 Today's Finds
-    </h2>
-
-    <span>
-      DILFINDS PICKS
-    </span>
-
-  </div>
-
-
-  <div class="products">
-
-
-    <!-- PRODUCT 1 -->
-
-    <div class="product">
-
-      <div class="product-image">
-        📱
-      </div>
-
-      <h3>
-        Smart Tech Find
-      </h3>
-
-      <p>
-        Useful tech product worth checking out.
-      </p>
-
-      <!-- APNA AFFILIATE LINK YAHAN LAGAO -->
-
-      <a
-        href="YOUR_AFFILIATE_LINK_1"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="shop-btn"
-      >
-        Shop Now →
-      </a>
-
-    </div>
-
-
-    <!-- PRODUCT 2 -->
-
-    <div class="product">
-
-      <div class="product-image">
-        🎧
-      </div>
-
-      <h3>
-        Trending Gadget
-      </h3>
-
-      <p>
-        A useful gadget for everyday use.
-      </p>
-
-      <a
-        href="YOUR_AFFILIATE_LINK_2"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="shop-btn"
-      >
-        Shop Now →
-      </a>
-
-    </div>
-
-
-    <!-- PRODUCT 3 -->
-
-    <div class="product">
-
-      <div class="product-image">
-        🎒
-      </div>
-
-      <h3>
-        Everyday Find
-      </h3>
-
-      <p>
-        A practical product selected by DILFINDS.
-      </p>
-
-      <a
-        href="YOUR_AFFILIATE_LINK_3"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="shop-btn"
-      >
-        Shop Now →
-      </a>
-
-    </div>
-
-
-    <!-- PRODUCT 4 -->
-
-    <div class="product">
-
-      <div class="product-image">
-        🏠
-      </div>
-
-      <h3>
-        Home Pick
-      </h3>
-
-      <p>
-        A useful home and lifestyle recommendation.
-      </p>
-
-      <a
-        href="YOUR_AFFILIATE_LINK_4"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="shop-btn"
-      >
-        Shop Now →
-      </a>
-
-    </div>
-
-
-  </div>
-
+<section id="fragrance" class="fragrance">
+<div class="badge">DILFINDS FEATURED COLLECTION</div>
+<h2>🖤 Luxury Fragrance Vault</h2>
+<p>Explore a curated collection of premium fragrance picks — 15 products in one collection.</p>
+<a class="shop-btn" href="https://app.lehlah.club/pc/239017" target="_blank" rel="nofollow sponsored noopener">Explore Collection →</a>
 </section>
 
-
-<!-- DISCLOSURE -->
-
-<div class="disclosure">
-
-  <strong>Affiliate Disclosure:</strong>
-  Some links on DILFINDS may be affiliate links.
-  If you purchase through a qualifying link,
-  DILFINDS may earn a commission at no extra cost to you.
-  Prices and availability are controlled by the respective retailer.
-
+<section id="finds">
+<div class="section-title">
+<h2>🔥 Today's Finds</h2>
+<span>DILFINDS PICKS</span>
 </div>
 
+<div class="products">
+
+<div class="product">
+<div class="product-image">📱</div>
+<h3>Smart Tech Find</h3>
+<p>Useful tech product worth checking out.</p>
+<a class="shop-btn" href="YOUR_AFFILIATE_LINK_1" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
+</div>
+
+<div class="product">
+<div class="product-image">🎧</div>
+<h3>Trending Gadget</h3>
+<p>A useful gadget for everyday use.</p>
+<a class="shop-btn" href="YOUR_AFFILIATE_LINK_2" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
+</div>
+
+<div class="product">
+<div class="product-image">🎒</div>
+<h3>Everyday Find</h3>
+<p>A practical product selected by DILFINDS.</p>
+<a class="shop-btn" href="YOUR_AFFILIATE_LINK_3" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
+</div>
+
+<div class="product">
+<div class="product-image">🏠</div>
+<h3>Home Pick</h3>
+<p>A useful home and lifestyle recommendation.</p>
+<a class="shop-btn" href="YOUR_AFFILIATE_LINK_4" target="_blank" rel="nofollow sponsored noopener">Shop Now →</a>
+</div>
+
+</div>
+</section>
+
+<div class="disclosure">
+<strong>Affiliate Disclosure:</strong>
+Some links on DILFINDS may be affiliate links. If you purchase through a qualifying link,
+DILFINDS may earn a commission at no extra cost to you. Prices and availability are controlled
+by the respective retailer.
+</div>
 
 </main>
 
-
-<!-- FOOTER -->
-
-<footer>
-
-  © 2026 DILFINDS ❤️
-  <br>
-  Smart Finds • Better Deals • India
-
-</footer>
-
+<footer>© 2026 DILFINDS ❤️ • Smart Finds • Better Deals • India</footer>
 
 </body>
-</html>
+</html>'''
+
+path.write_text(html, encoding="utf-8")
+print(f"[Download updated DILFINDS website](sandbox:{path})")
